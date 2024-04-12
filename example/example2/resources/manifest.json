@@ -1,0 +1,4 @@
+{
+    "bundle.symbolic_name" : "${ProjectName}",
+    "bundle.activator" : true
+}

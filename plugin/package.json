@@ -1,0 +1,12 @@
+{
+	"name": "%{ProjectName}",
+	"displayName": "%{ProjectName}",
+	"group": "aubo_scope",
+	"description": "%{Description}",
+	"version": "0.1.0",
+	"publisher": "%{VendorName}",
+	"url": "%{Url}",
+	"email": "%{Email}",
+	"license": "aubo",
+	"icon": ""
+}

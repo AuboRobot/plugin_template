@@ -1,0 +1,12 @@
+{
+    "name": "json_rpc_test",
+    "displayName": "json_rpc_test",
+    "group": "aubo_scope",
+    "description": "Put a short description of your plugin here",
+    "version": "0.1.0",
+    "publisher": "aubo-robotics",
+    "url": "https://www.aubo-robotics.com",
+    "email": "your@aubo-robotics.com",
+    "license": "aubo",
+    "icon": ""
+}

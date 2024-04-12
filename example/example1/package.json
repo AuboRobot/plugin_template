@@ -1,0 +1,12 @@
+{
+    "name": "untitled1",
+    "displayName": "untitled1",
+    "group": "aubo_scope",
+    "description": "Put a short description of your plugin here",
+    "version": "0.1.0",
+    "publisher": "MyCompany",
+    "url": "https://www.mycompany.com",
+    "email": "your@mycompany.com",
+    "license": "aubo",
+    "icon": ""
+}

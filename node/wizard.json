@@ -1,0 +1,233 @@
+{
+    "version": 1,
+    "supportedProjectTypes": [ ],
+    "id": "H.Node",
+    "category": "O.aubo_caps",
+    "trDescription": "Creates a aubo_scope installation/program node.",
+    "trDisplayName": "Aubo installation/program Node",
+    "trDisplayCategory": "aubo_caps",
+    "iconText": "h/cpp/ui",
+    "enabled": "%{JS: value('Plugins').indexOf('CppEditor') >= 0}",
+
+    "options":
+    [
+        { "key": "TargetPath", "value": "%{Path}" },
+        { "key": "LOWER_NAME", "value": "%{JS: value('NodeName').toLowerCase()}" },
+        { "key": "UPPER_NAME", "value": "%{JS: value('NodeName').toUpperCase()}" }
+    ],
+
+    "pages":
+    [
+        {
+            "trDisplayName": "Define Node Name",
+            "trShortTitle": "Details",
+            "typeId": "Fields",
+            "data" :
+            [
+                {
+                    "name": "NodeName",
+                    "trDisplayName": "Installation/Program Node name:",
+                    "mandatory": true,
+                    "type": "LineEdit",
+                    "data": { "validator": "(?:(?:[a-zA-Z_][a-zA-Z_0-9]*::)*[a-zA-Z_][a-zA-Z_0-9]*|)" }
+                },                           
+                {
+                    "name": "Sp1",
+                    "type": "Spacer",
+                    "data": { "factor": 2 }
+                },
+                {
+                    "name": "Sp2",
+                    "type": "Spacer"
+                },
+                {
+                    "name": "Path",
+                    "type": "PathChooser",
+                    "trDisplayName": "Path:",
+                    "mandatory": true,
+                    "data":
+                    {
+                        "kind": "directory",
+                        "basePath": "%{InitialPath}",
+                        "path": "%{InitialPath}"
+                    }
+                }
+            ]
+        },
+        {
+            "trDisplayName": "Choose Node Type",
+            "trShortTitle": "Node Type",
+            "typeId": "Fields",
+            "data":
+            [
+                {
+                    "name": "NodeType",
+                    "trDisplayName": "Node Type:",
+                    "type": "ComboBox",
+                    "data":
+                    {
+                        "index": 0,
+                        "items":
+                        [
+                            {
+                                "trKey": "Program",
+                                "value": "program"
+                            },
+                            {
+                                "trKey": "Installation",
+                                "value": "installation"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "trDisplayName": "Project Management",
+            "trShortTitle": "Summary",
+            "typeId": "Summary"
+        }
+    ],
+
+    "generators":
+    [
+        {
+            "typeId": "File",
+            "data":
+            [
+                {
+                    "source": "installation_node.h",
+                    "target": "%{Path}/%{LOWER_NAME}_installation_node.h",
+                    "openInEditor": true,
+                    "options": [
+                        { "key": "Cpp:License:FileName", "value": "%{HdrFileName}" },
+                        { "key": "Cpp:License:ClassName", "value": "%{LOWER_NAME}" }
+                    ],
+                    "condition": "%{JS: value('NodeType') === 'installation'}"
+                },
+                {
+                    "source": "installation_node_view.h",
+                    "target": "%{Path}/%{LOWER_NAME}_installation_node_view.h",
+                    "openInEditor": true,
+                    "options": [
+                        { "key": "Cpp:License:FileName", "value": "%{HdrFileName}" },
+                        { "key": "Cpp:License:ClassName", "value": "%{LOWER_NAME}" }
+                    ],
+                    "condition": "%{JS: value('NodeType') === 'installation'}"
+                },
+                {
+                    "source": "installation_node_service.h",
+                    "target": "%{Path}/%{LOWER_NAME}_installation_node_service.h",
+                    "openInEditor": true,
+                    "options": [
+                        { "key": "Cpp:License:FileName", "value": "%{HdrFileName}" },
+                        { "key": "Cpp:License:ClassName", "value": "%{LOWER_NAME}" }
+                    ],
+                    "condition": "%{JS: value('NodeType') === 'installation'}"
+                },
+                {
+                    "source": "installation_node.cpp",
+                    "target": "%{Path}/%{LOWER_NAME}_installation_node.cpp",
+                    "openInEditor": true,
+                    "options": [
+                        { "key": "Cpp:License:FileName", "value": "%{SrcFileName}" },
+                        { "key": "Cpp:License:ClassName", "value": "%{LOWER_NAME}" }
+                    ],
+                    "condition": "%{JS: value('NodeType') === 'installation'}"
+                },
+                {
+                    "source": "installation_node_view.cpp",
+                    "target": "%{Path}/%{LOWER_NAME}_installation_node_view.cpp",
+                    "openInEditor": true,
+                    "options": [
+                        { "key": "Cpp:License:FileName", "value": "%{SrcFileName}" },
+                        { "key": "Cpp:License:ClassName", "value": "%{LOWER_NAME}" }
+                    ],
+                    "condition": "%{JS: value('NodeType') === 'installation'}"
+                },
+                {
+                    "source": "installation_node_service.cpp",
+                    "target": "%{Path}/%{LOWER_NAME}_installation_node_service.cpp",
+                    "openInEditor": true,
+                    "options": [
+                        { "key": "Cpp:License:FileName", "value": "%{SrcFileName}" },
+                        { "key": "Cpp:License:ClassName", "value": "%{LOWER_NAME}" }
+                    ],
+                    "condition": "%{JS: value('NodeType') === 'installation'}"
+                },
+                {
+                    "source": "installation_node_view.ui",
+                    "target": "%{Path}/%{LOWER_NAME}_installation_node_view.ui",
+                    "openInEditor": true,
+                    "condition": "%{JS: value('NodeType') === 'installation'}"
+                },
+                {
+                    "source": "program_node_contribution.h",
+                    "target": "%{Path}/%{LOWER_NAME}_program_node_contribution.h",
+                    "openInEditor": true,
+                    "options": [
+                        { "key": "Cpp:License:FileName", "value": "%{HdrFileName}" },
+                        { "key": "Cpp:License:ClassName", "value": "%{LOWER_NAME}" }
+                    ],
+                    "condition": "%{JS: value('NodeType') === 'program'}"
+                },
+                {
+                    "source": "program_node_view.h",
+                    "target": "%{Path}/%{LOWER_NAME}_program_node_view.h",
+                    "openInEditor": true,
+                    "options": [
+                        { "key": "Cpp:License:FileName", "value": "%{HdrFileName}" },
+                        { "key": "Cpp:License:ClassName", "value": "%{LOWER_NAME}" }
+                    ],
+                    "condition": "%{JS: value('NodeType') === 'program'}"
+                },
+                {
+                    "source": "program_node_service.h",
+                    "target": "%{Path}/%{LOWER_NAME}_program_node_service.h",
+                    "openInEditor": true,
+                    "options": [
+                        { "key": "Cpp:License:FileName", "value": "%{HdrFileName}" },
+                        { "key": "Cpp:License:ClassName", "value": "%{LOWER_NAME}" }
+                    ],
+                    "condition": "%{JS: value('NodeType') === 'program'}"
+                },
+                {
+                    "source": "program_node_contribution.cpp",
+                    "target": "%{Path}/%{LOWER_NAME}_program_node_contribution.cpp",
+                    "openInEditor": true,
+                    "options": [
+                        { "key": "Cpp:License:FileName", "value": "%{SrcFileName}" },
+                        { "key": "Cpp:License:ClassName", "value": "%{LOWER_NAME}" }
+                    ],
+                    "condition": "%{JS: value('NodeType') === 'program'}"
+                },
+                {
+                    "source": "program_node_view.cpp",
+                    "target": "%{Path}/%{LOWER_NAME}_program_node_view.cpp",
+                    "openInEditor": true,
+                    "options": [
+                        { "key": "Cpp:License:FileName", "value": "%{SrcFileName}" },
+                        { "key": "Cpp:License:ClassName", "value": "%{LOWER_NAME}" }
+                    ],
+                    "condition": "%{JS: value('NodeType') === 'program'}"
+                },
+                {
+                    "source": "program_node_service.cpp",
+                    "target": "%{Path}/%{LOWER_NAME}_program_node_service.cpp",
+                    "openInEditor": true,
+                    "options": [
+                        { "key": "Cpp:License:FileName", "value": "%{SrcFileName}" },
+                        { "key": "Cpp:License:ClassName", "value": "%{LOWER_NAME}" }
+                    ],
+                    "condition": "%{JS: value('NodeType') === 'program'}"
+                },
+                {
+                    "source": "program_node_view.ui",
+                    "target": "%{Path}/%{LOWER_NAME}_program_node_view.ui",
+                    "openInEditor": true,
+                    "condition": "%{JS: value('NodeType') === 'program'}"
+                }
+            ]
+        }
+    ]
+}
