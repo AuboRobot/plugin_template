@@ -10,7 +10,7 @@
 ## 安装
 
 ```bash
-git clone http://git.aubo-robotics.cn:8001/aubo_plus/template.git
+git clone https://github.com/AuboRobot/plugin_template.git
 cd template
 chmod +x ./INSTALL.sh
 ./INSTALL.sh
